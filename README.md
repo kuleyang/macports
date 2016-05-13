@@ -9,9 +9,9 @@
 2. 克隆此仓库，并建立索引。
 
 
-        $ sudo -u macports git clone https://github.com/kuleyang/macports.git /opt/local/macports
+        $ sudo git clone https://github.com/kuleyang/macports.git /opt/local/macports
         $ cd /opt/local/macports
-        $ portindex
+        $ sudo portindex
 
 3. 编辑sources.conf
 
