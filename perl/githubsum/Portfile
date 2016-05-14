@@ -5,11 +5,12 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           perl5 1.0
 
-github.setup        kuleyang githubsum 0.1.0 v
+name                githubsum
 categories          perl
 platforms           darwin
+version             0.1.0
 perl5.branches      5.22
-maintainers         icloud.com:kuleyang openmaintainer
+maintainers         icloud.com:kuleyang
 license             MIT
 description         Helper to checksum Github tags
 long_description    \
@@ -20,6 +21,8 @@ long_description    \
 depends_lib         port:wget \
                     port:openssl \
                     port:p${perl5.major}-getopt-long-descriptive
+
+github.setup        kuleyang githubsum ${version} v
 
 checksums           rmd160 cf959868e0bc120d4dc2c14de630982707cfdeae \
                     sha256 8bfacd6ad17cd15cd33375dc4bb70dbec723542cd0d2640007abf4186dff8a67
