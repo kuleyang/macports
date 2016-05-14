@@ -3,25 +3,45 @@
 
 PortSystem          1.0
 PortGroup           github 1.0
+PortGroup           perl5 1.0
 
-github.setup        paulhammond webkit2png 0.7 v
-name                webkit2png
-categories          python graphics
+name                githubsum
+categories          perl
 platforms           darwin
-license             permissive
-maintainers         gmail.com:allan.que openmaintainer
-description         webkit2png is a command line tool that creates screenshots of webpages.
-long_description    ${description}
-homepage            http://www.paulhammond.org/webkit2png
+version             0.2.0
+perl5.branches      5.22
+maintainers         icloud.com:kule.yang
+license             MIT
+description         Helper to checksum Github tags
+long_description    \
+    githubsum allows you to easily print Macports checksums for tagged \
+    versions of your project on Github (or branches as well). This \
+    can be useful for updating Portfiles
+homepage            https://github.com/kuleyang/githubsum
 
-checksums           rmd160  c2ba00cfc2a75a26b05243ed34da8ba3742a4653 \
-                    sha256  f3069bb08a249f8378b7e2d02d3548bc7917c5ab1c08892d6d3bf8b424695077
+depends_lib         port:wget \
+                    port:openssl \
+                    port:p${perl5.major}-getopt-long-descriptive
+
+github.setup        kuleyang githubsum ${version} v
+
+checksums           rmd160 cf959868e0bc120d4dc2c14de630982707cfdeae \
+                    sha256 8bfacd6ad17cd15cd33375dc4bb70dbec723542cd0d2640007abf4186dff8a67
 
 use_configure       no
+supported_archs     noarch
 
-build {}
-
-destroot {
-    xinstall -m 755 -d ${destroot}${prefix}/bin
-    xinstall -m 755 ${worksrcpath}/webkit2png ${destroot}${prefix}/bin
+post-patch {
+    reinplace       "s&#!/usr/bin/env perl&#!${prefix}/bin/perl${perl5.major}&" ${worksrcpath}/githubsum
 }
+
+build               {}
+
+destroot            {
+    xinstall -m 0755 ${worksrcpath}/githubsum \
+        ${destroot}${prefix}/bin/githubsum
+    xinstall -d ${destroot}${prefix}/share/doc/${name}
+    xinstall -m 0644 ${worksrcpath}/README.md \
+        ${destroot}${prefix}/share/doc/${name}
+}
+
