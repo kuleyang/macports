@@ -25,8 +25,8 @@ depends_lib         port:wget \
 
 github.setup        kuleyang githubsum ${version} v
 
-checksums           rmd160 696ba9eaa256aa95cbfd4b8395275d85c7871c46 \
-                    sha256 5cdf26cf1b1b815101dc004609d9f0be085584d40f524f1f48bbaa9b82f6b31b
+checksums           rmd160 cf959868e0bc120d4dc2c14de630982707cfdeae \
+                    sha256 8bfacd6ad17cd15cd33375dc4bb70dbec723542cd0d2640007abf4186dff8a67
 
 use_configure       no
 supported_archs     noarch
