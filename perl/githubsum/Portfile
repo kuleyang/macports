@@ -3,10 +3,12 @@
 
 PortSystem          1.0
 PortGroup           github 1.0
+PortGroup           perl5 1.0
 
 github.setup        kuleyang githubsum 0.1.0 v
 categories          perl
 platforms           darwin
+perl5.branches      5.22
 maintainers         icloud.com:kuleyang openmaintainer
 license             MIT
 description         Helper to checksum Github tags
@@ -17,16 +19,16 @@ long_description    \
 
 depends_lib         port:wget \
                     port:openssl \
-                    port:p5.22-getopt-long-descriptive
+                    port:p${perl5.major}-getopt-long-descriptive
 
-checksums           rmd160 696ba9eaa256aa95cbfd4b8395275d85c7871c46 \
-                    sha256 5cdf26cf1b1b815101dc004609d9f0be085584d40f524f1f48bbaa9b82f6b31b
+checksums           rmd160 cf959868e0bc120d4dc2c14de630982707cfdeae \
+                    sha256 8bfacd6ad17cd15cd33375dc4bb70dbec723542cd0d2640007abf4186dff8a67
 
 use_configure       no
 supported_archs     noarch
 
 post-patch {
-    reinplace       "s&#!/usr/bin/env perl&#!${prefix}/bin/perl5.22&" ${worksrcpath}/githubsum
+    reinplace       "s&#!/usr/bin/env perl&#!${prefix}/bin/${perl5.major}&" ${worksrcpath}/githubsum
 }
 
 build               {}
@@ -35,7 +37,7 @@ destroot            {
     xinstall -m 0755 ${worksrcpath}/githubsum \
         ${destroot}${prefix}/bin/githubsum
     xinstall -d ${destroot}${prefix}/share/doc/${name}
-    xinstall -m 0644 ${worksrcpath}/LICENSE \
+    xinstall -m 0644 ${worksrcpath}/README.md \
         ${destroot}${prefix}/share/doc/${name}
 }
 
