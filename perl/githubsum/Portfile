@@ -1,0 +1,41 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        kuleyang githubsum 0.1.0 v
+categories          perl
+platforms           darwin
+maintainers         icloud.com:kuleyang openmaintainer
+license             MIT
+description         Helper to checksum Github tags
+long_description    \
+    githubsum allows you to easily print Macports checksums for tagged \
+    versions of your project on Github (or branches as well). This \
+    can be useful for updating Portfiles
+
+depends_lib         port:wget \
+                    port:openssl \
+                    port:p5.22-getopt-long-descriptive
+
+checksums           rmd160 696ba9eaa256aa95cbfd4b8395275d85c7871c46 \
+                    sha256 5cdf26cf1b1b815101dc004609d9f0be085584d40f524f1f48bbaa9b82f6b31b
+
+use_configure       no
+supported_archs     noarch
+
+post-patch {
+    reinplace       "s&#!/usr/bin/env perl&#!${prefix}/bin/perl5.22&" ${worksrcpath}/githubsum
+}
+
+build               {}
+
+destroot            {
+    xinstall -m 0755 ${worksrcpath}/githubsum \
+        ${destroot}${prefix}/bin/githubsum
+    xinstall -d ${destroot}${prefix}/share/doc/${name}
+    xinstall -m 0644 ${worksrcpath}/LICENSE \
+        ${destroot}${prefix}/share/doc/${name}
+}
+
