@@ -32,7 +32,7 @@ use_configure       no
 supported_archs     noarch
 
 post-patch {
-    reinplace       "s&#!/usr/bin/env perl&#!${prefix}/bin/p${perl5.major}&" ${worksrcpath}/githubsum
+    reinplace       "s&#!/usr/bin/env perl&#!${prefix}/bin/perl${perl5.major}&" ${worksrcpath}/githubsum
 }
 
 build               {}
