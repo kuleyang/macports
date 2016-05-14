@@ -10,13 +10,14 @@ categories          perl
 platforms           darwin
 version             0.1.0
 perl5.branches      5.22
-maintainers         icloud.com:kuleyang
+maintainers         icloud.com:kule.yang openmaintainer
 license             MIT
 description         Helper to checksum Github tags
 long_description    \
     githubsum allows you to easily print Macports checksums for tagged \
     versions of your project on Github (or branches as well). This \
     can be useful for updating Portfiles
+homepage            https://github.com/kuleyang/githubsum
 
 depends_lib         port:wget \
                     port:openssl \
@@ -31,7 +32,7 @@ use_configure       no
 supported_archs     noarch
 
 post-patch {
-    reinplace       "s&#!/usr/bin/env perl&#!${prefix}/bin/${perl5.major}&" ${worksrcpath}/githubsum
+    reinplace       "s&#!/usr/bin/env perl&#!${prefix}/bin/p${perl5.major}&" ${worksrcpath}/githubsum
 }
 
 build               {}
