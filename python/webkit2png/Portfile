@@ -4,7 +4,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        paulhammond webkit2png 0.7 v
+github.setup        kuleyang webkit2png 0.8 v
 name                webkit2png
 categories          python graphics
 platforms           darwin
@@ -14,8 +14,8 @@ description         webkit2png is a command line tool that creates screenshots o
 long_description    ${description}
 homepage            http://www.paulhammond.org/webkit2png
 
-checksums           rmd160  c2ba00cfc2a75a26b05243ed34da8ba3742a4653 \
-                    sha256  f3069bb08a249f8378b7e2d02d3548bc7917c5ab1c08892d6d3bf8b424695077
+checksums           rmd160  ac5e6986ce7d909da0f32951e34fe4c8454fc4ba \
+                    sha256  97b68136b85a09ec6e063a41c414db42868b3985aebb64c69021aa642dea09ed
 
 use_configure       no
 
