@@ -21,11 +21,11 @@ checksums           rmd160  0782b9a61cd0309b588e2f6a43fad234052afdc1 \
                     sha256  0e48bc5be72bd1e37aa290081ed6bf308f01b3b23c377d25dc37eea2a7c35f08
 
 subport ${name}-devel {
-    github.setup        moretension duti 3b2311263aca633fba76b4baef8de78420214fcf
-    version             20160521
+    github.setup        moretension duti 105b16e3292e87eb9cc7048bdd5c24b66bedf9a3
+    version             20141204
 
-    checksums           rmd160  9c1185a5c5e9fc54612808977ee8f548b2258d31 \
-                        sha256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    checksums           rmd160  f6f119ba0383a6fdb38feb76028dfe47cd6bb07e \
+                        sha256  8ac91da740a036af3139752c60c1e1d86774340e4841406eba545ff5ffebae82
 
     conflicts           ${name}
 
